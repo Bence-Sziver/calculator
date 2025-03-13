@@ -34,8 +34,13 @@ body {
   justify-content: center;
   align-items: center;
   height: 25%;
+  margin-bottom: 50px;
   border: 2px solid rgb(0, 0, 0);
   background-color: rgb(194, 212, 212);
   font-family: 'Courier New', Courier, monospace;
   font-size: 48px;
+}
+
+#button-container {
+  height: 60%;
 }
