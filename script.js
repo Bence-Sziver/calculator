@@ -1,4 +1,5 @@
 let operator = null;
+let isSecondOperand = false;
 let num1 = null;
 let num2 = null;
 let result = null;
@@ -11,14 +12,14 @@ const display = document.querySelector("#display");
 
 digitButtons.forEach(digitButton => {
   digitButton.addEventListener("click", event => {
-    if (operator) {
+    if (isSecondOperand && num2 === null) {
       display.textContent = "";
     }
     display.textContent += event.target.textContent;
-    if (operator) {
-      num2 = +display.textContent;
-    } else {
+    if (!isSecondOperand) {
       num1 = +display.textContent;
+    } else {
+      num2 = +display.textContent;
     }
     console.log(`num1: ${num1}`);
     console.log(`num2: ${num2}`);
@@ -40,6 +41,7 @@ operatorButtons.forEach(operatorButton => {
       case "/":
         operator = divide;      
     }
+    isSecondOperand = true;
   });
 });
 
@@ -48,11 +50,13 @@ equalsButton.addEventListener("click", event => {
   display.textContent = "";
   display.textContent += result;
   operator = null;
+  num2 = null;
 });
 
 clearButton.addEventListener("click", () => {
   display.textContent = "";
   operator = null;
+  num2 = null;
 });
 
 function operate(operator, num1, num2) {
