@@ -67,6 +67,14 @@ button {
   flex: 1;
 }
 
+#clear {
+  background-color: rgb(228, 190, 146);
+}
+
+#equals {
+  background-color: rgb(229, 229, 116);
+}
+
 #operator-container {
   display: flex;
   flex-direction: column;
@@ -75,4 +83,5 @@ button {
 
 #operator-container button {
   flex: 1;
+  background-color: rgb(177, 227, 227);
 }
