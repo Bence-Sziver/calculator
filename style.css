@@ -42,5 +42,14 @@ body {
 }
 
 #button-container {
+  display: flex;
   height: 60%;
+}
+
+#digit-and-control-container {
+  flex: 1;
+}
+
+#operator-container {
+  flex-basis: 20%;
 }
