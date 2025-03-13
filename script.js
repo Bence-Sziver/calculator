@@ -47,10 +47,12 @@ equalsButton.addEventListener("click", event => {
   result = operate(operator, num1, num2);
   display.textContent = "";
   display.textContent += result;
+  operator = null;
 });
 
 clearButton.addEventListener("click", () => {
   display.textContent = "";
+  operator = null;
 });
 
 function operate(operator, num1, num2) {
