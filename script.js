@@ -45,7 +45,7 @@ operatorButtons.forEach(operatorButton => {
   });
 });
 
-equalsButton.addEventListener("click", event => {
+equalsButton.addEventListener("click", () => {
   result = operate(operator, num1, num2);
   display.textContent = "";
   display.textContent += result;
