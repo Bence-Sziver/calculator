@@ -1,9 +1,11 @@
 let operator = null;
 let num1 = null;
 let num2 = null;
+let result = null;
 
 const digitButtons = document.querySelectorAll(".digit");
 const operatorButtons = document.querySelectorAll("#operator-container button");
+const equalsButton = document.querySelector("#equals");
 const clearButton = document.querySelector("#clear");
 const display = document.querySelector("#display");
 
@@ -38,8 +40,13 @@ operatorButtons.forEach(operatorButton => {
       case "/":
         operator = divide;      
     }
-    console.log(operator);
   });
+});
+
+equalsButton.addEventListener("click", event => {
+  result = operate(operator, num1, num2);
+  display.textContent = "";
+  display.textContent += result;
 });
 
 clearButton.addEventListener("click", () => {
