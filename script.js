@@ -67,7 +67,7 @@ clearButton.addEventListener("click", () => {
 });
 
 function operate(operator, num1, num2) {
-  return operator(num1, num2);
+  return Math.round(operator(num1, num2) * 1000) / 1000;
 }
 
 function add(num1, num2) {
