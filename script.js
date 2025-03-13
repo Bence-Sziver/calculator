@@ -49,13 +49,11 @@ equalsButton.addEventListener("click", event => {
   result = operate(operator, num1, num2);
   display.textContent = "";
   display.textContent += result;
-  operator = null;
   num2 = null;
 });
 
 clearButton.addEventListener("click", () => {
   display.textContent = "";
-  operator = null;
   num2 = null;
 });
 
