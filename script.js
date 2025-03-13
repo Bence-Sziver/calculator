@@ -12,7 +12,7 @@ const display = document.querySelector("#display");
 
 digitButtons.forEach(digitButton => {
   digitButton.addEventListener("click", event => {
-    if (isSecondOperand && num2 === null) {
+    if (isSecondOperand && num2 === null || num1 === null) {
       display.textContent = "";
     }
     display.textContent += event.target.textContent;
@@ -49,7 +49,9 @@ equalsButton.addEventListener("click", event => {
   result = operate(operator, num1, num2);
   display.textContent = "";
   display.textContent += result;
+  num1 = null;
   num2 = null;
+  isSecondOperand = false;
 });
 
 clearButton.addEventListener("click", () => {
