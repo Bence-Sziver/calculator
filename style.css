@@ -50,6 +50,18 @@ body {
   flex: 1;
 }
 
+button {
+  border-radius: 5px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 32px;
+}
+
 #operator-container {
+  display: flex;
+  flex-direction: column;
   flex-basis: 20%;
+}
+
+#operator-container button {
+  flex: 1;
 }
