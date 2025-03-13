@@ -28,6 +28,13 @@ digitButtons.forEach(digitButton => {
 
 operatorButtons.forEach(operatorButton => {
   operatorButton.addEventListener("click", event => {
+    if (num2 !== null) {
+      result = operate(operator, num1, num2);
+      display.textContent = "";
+      display.textContent += result;
+      num1 = result;
+      num2 = null;
+    }
     switch (event.target.textContent) {
       case "+":
         operator = add;
