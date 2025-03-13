@@ -9,9 +9,17 @@ const display = document.querySelector("#display");
 
 digitButtons.forEach(digitButton => {
   digitButton.addEventListener("click", event => {
+    if (operator) {
+      display.textContent = "";
+    }
     display.textContent += event.target.textContent;
-    num1 = +display.textContent;
+    if (operator) {
+      num2 = +display.textContent;
+    } else {
+      num1 = +display.textContent;
+    }
     console.log(`num1: ${num1}`);
+    console.log(`num2: ${num2}`);
   });
 });
 
