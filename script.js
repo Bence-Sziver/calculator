@@ -2,6 +2,20 @@ let operator = null;
 let num1 = null;
 let num2 = null;
 
+const digitButtons = document.querySelectorAll(".digit");
+const clearButton = document.querySelector("#clear");
+const display = document.querySelector("#display");
+
+digitButtons.forEach(digitButton => {
+  digitButton.addEventListener("click", event => {
+    display.textContent += event.target.textContent;
+  });
+});
+
+clearButton.addEventListener("click", () => {
+  display.textContent = "";
+});
+
 function operate(operator, num1, num2) {
   return operator(num1, num2);
 }
