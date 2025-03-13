@@ -64,7 +64,10 @@ equalsButton.addEventListener("click", () => {
 
 clearButton.addEventListener("click", () => {
   display.textContent = "";
+  num1 = null;
   num2 = null;
+  operator = null;
+  isSecondOperand = false;
 });
 
 function operate(operator, num1, num2) {
