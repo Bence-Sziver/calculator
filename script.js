@@ -53,6 +53,7 @@ operatorButtons.forEach(operatorButton => {
 });
 
 equalsButton.addEventListener("click", () => {
+  if (operator === null || num2 === null) return;
   result = operate(operator, num1, num2);
   display.textContent = "";
   display.textContent += result;
