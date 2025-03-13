@@ -26,6 +26,7 @@ body {
   border-radius: 5px;
   box-shadow: 5px 5px;
   padding: 20px;
+  background-color: rgb(229, 229, 219);
 }
 
 #display {
