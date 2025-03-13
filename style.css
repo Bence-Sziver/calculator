@@ -47,6 +47,13 @@ body {
 }
 
 #digit-and-control-container {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.row {
+  display: flex;
   flex: 1;
 }
 
@@ -54,6 +61,10 @@ button {
   border-radius: 5px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-size: 32px;
+}
+
+.row button {
+  flex: 1;
 }
 
 #operator-container {
