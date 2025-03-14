@@ -39,6 +39,7 @@ body {
   background-color: rgb(194, 212, 212);
   font-family: 'Courier New', Courier, monospace;
   font-size: 48px;
+  overflow: hidden;
 }
 
 #button-container {
