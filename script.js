@@ -14,56 +14,19 @@ const display = document.querySelector("#display");
 
 digitButtons.forEach(digitButton => {
   digitButton.addEventListener("click", event => {
-    if (isSecondOperand && num2 === null || num1 === null) {
-      display.textContent = "";
-    }
-    if (event.target.id === "decimal" && display.textContent.includes(".")) {
-      return;
-    }
-    display.textContent += event.target.textContent;
-    if (!isSecondOperand) {
-      num1 = +display.textContent;
-    } else {
-      num2 = +display.textContent;
-    }
+    fillDisplay(event);
+    storeNumber();
   });
 });
 
 operatorButtons.forEach(operatorButton => {
   operatorButton.addEventListener("click", event => {
-    if (num2 !== null) {
-      result = operate(operator, num1, num2);
-      display.textContent = "";
-      display.textContent += result;
-      num1 = result;
-      num2 = null;
-    }
-    switch (event.target.textContent) {
-      case "+":
-        operator = add;
-        break;
-      case "-":
-        operator = subtract;
-        break;
-      case "x":
-        operator = multiply;
-        break;
-      case "/":
-        operator = divide;      
-    }
-    isSecondOperand = true;
+    evalDisplayWithOperator();
+    storeOperator(event);
   });
 });
 
-equalsButton.addEventListener("click", () => {
-  if (operator === null || num2 === null) return;
-  result = operate(operator, num1, num2);
-  display.textContent = "";
-  display.textContent += result;
-  num1 = null;
-  num2 = null;
-  isSecondOperand = false;
-});
+equalsButton.addEventListener("click", evalDisplayWithEquals);
 
 clearAllButton.addEventListener("click", () => {
   display.textContent = "";
@@ -73,7 +36,80 @@ clearAllButton.addEventListener("click", () => {
   isSecondOperand = false;
 });
 
-clearButton.addEventListener("click", () => {
+clearButton.addEventListener("click", clearSingleDigit);
+
+document.addEventListener("keydown", event => {
+  const operatorArr = ["+", "-", "*", "/"];
+  if (event.key >= 0 && event.key <= 9 || event.key === ".") {
+    fillDisplay(event);
+    storeNumber();
+  } else if (event.key === "Enter") {
+    evalDisplayWithEquals();
+  } else if (event.key === "Backspace") {
+    clearSingleDigit();
+  } else if (operatorArr.includes(event.key)) {
+    evalDisplayWithOperator();
+    storeOperator(event); 
+  };
+});
+
+function fillDisplay(event) {
+  if (isSecondOperand && num2 === null || num1 === null) {
+    display.textContent = "";
+  }
+  if (display.textContent.includes(".") && ( event.key === "." || event.target.id === "decimal")) {
+    return;
+  }
+  display.textContent += event.key || event.target.textContent;
+}
+
+function storeNumber() {
+  if (!isSecondOperand) {
+    num1 = +display.textContent;
+  } else {
+    num2 = +display.textContent;
+  }
+}
+
+function evalDisplayWithOperator() {
+  if (num2 !== null) {
+    result = operate(operator, num1, num2);
+    display.textContent = "";
+    display.textContent += result;
+    num1 = result;
+    num2 = null;
+  }
+}
+
+function storeOperator(event) {
+  switch (event.key || event.target.textContent) {
+    case "+":
+      operator = add;
+      break;
+    case "-":
+      operator = subtract;
+      break;
+    case "x":
+    case "*":
+      operator = multiply;
+      break;
+    case "/":
+      operator = divide;      
+  }
+  isSecondOperand = true;
+}
+
+function evalDisplayWithEquals() {
+  if (operator === null || num2 === null) return;
+  result = operate(operator, num1, num2);
+  display.textContent = "";
+  display.textContent += result;
+  num1 = null;
+  num2 = null;
+  isSecondOperand = false;
+}
+
+function clearSingleDigit() {
   let displayArr = display.textContent.split("");
   displayArr.pop();
   display.textContent = displayArr.join("");
@@ -90,7 +126,7 @@ clearButton.addEventListener("click", () => {
       num2 = +display.textContent;
     }
   }
-});
+}
 
 function operate(operator, num1, num2) {
   return Math.round(operator(num1, num2) * 1000) / 1000;
