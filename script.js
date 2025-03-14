@@ -1,8 +1,8 @@
 let operator = null;
-let isSecondOperand = false;
 let num1 = null;
 let num2 = null;
 let result = null;
+let isSecondOperand = false;
 
 const digitButtons = document.querySelectorAll(".digit");
 const operatorButtons = document.querySelectorAll("#operator-container button");
@@ -21,12 +21,12 @@ digitButtons.forEach(digitButton => {
 
 operatorButtons.forEach(operatorButton => {
   operatorButton.addEventListener("click", event => {
-    evalDisplayWithOperator();
+    evalWithOperator();
     storeOperator(event);
   });
 });
 
-equalsButton.addEventListener("click", evalDisplayWithEquals);
+equalsButton.addEventListener("click", evalWithEquals);
 
 clearAllButton.addEventListener("click", () => {
   display.textContent = "";
@@ -44,11 +44,11 @@ document.addEventListener("keydown", event => {
     fillDisplay(event);
     storeNumber();
   } else if (event.key === "Enter") {
-    evalDisplayWithEquals();
+    evalWithEquals();
   } else if (event.key === "Backspace") {
     clearSingleDigit();
   } else if (operatorArr.includes(event.key)) {
-    evalDisplayWithOperator();
+    evalWithOperator();
     storeOperator(event); 
   };
 });
@@ -71,7 +71,7 @@ function storeNumber() {
   }
 }
 
-function evalDisplayWithOperator() {
+function evalWithOperator() {
   if (num2 !== null) {
     result = operate(operator, num1, num2);
     display.textContent = "";
@@ -99,7 +99,7 @@ function storeOperator(event) {
   isSecondOperand = true;
 }
 
-function evalDisplayWithEquals() {
+function evalWithEquals() {
   if (operator === null || num2 === null) return;
   result = operate(operator, num1, num2);
   display.textContent = "";
