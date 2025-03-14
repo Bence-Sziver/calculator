@@ -67,7 +67,8 @@ button {
   flex: 1;
 }
 
-#clear {
+#clear,
+#clear-all {
   background-color: rgb(228, 190, 146);
 }
 
@@ -84,4 +85,9 @@ button {
 #operator-container button {
   flex: 1;
   background-color: rgb(177, 227, 227);
+}
+
+#operator-container #plus {
+  flex-grow: 0;
+  flex-basis: 40%;
 }

@@ -7,7 +7,7 @@ let result = null;
 const digitButtons = document.querySelectorAll(".digit");
 const operatorButtons = document.querySelectorAll("#operator-container button");
 const equalsButton = document.querySelector("#equals");
-const clearButton = document.querySelector("#clear");
+const clearButton = document.querySelector("#clear-all");
 const display = document.querySelector("#display");
 
 digitButtons.forEach(digitButton => {
@@ -21,8 +21,6 @@ digitButtons.forEach(digitButton => {
     } else {
       num2 = +display.textContent;
     }
-    console.log(`num1: ${num1}`);
-    console.log(`num2: ${num2}`);
   });
 });
 
