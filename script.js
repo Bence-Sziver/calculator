@@ -7,7 +7,8 @@ let result = null;
 const digitButtons = document.querySelectorAll(".digit");
 const operatorButtons = document.querySelectorAll("#operator-container button");
 const equalsButton = document.querySelector("#equals");
-const clearButton = document.querySelector("#clear-all");
+const clearAllButton = document.querySelector("#clear-all");
+const clearButton = document.querySelector("#clear");
 const display = document.querySelector("#display");
 
 digitButtons.forEach(digitButton => {
@@ -60,12 +61,18 @@ equalsButton.addEventListener("click", () => {
   isSecondOperand = false;
 });
 
-clearButton.addEventListener("click", () => {
+clearAllButton.addEventListener("click", () => {
   display.textContent = "";
   num1 = null;
   num2 = null;
   operator = null;
   isSecondOperand = false;
+});
+
+clearButton.addEventListener("click", () => {
+  let displayArr = display.textContent.split("");
+  displayArr.pop();
+  display.textContent = displayArr.join("");
 });
 
 function operate(operator, num1, num2) {
