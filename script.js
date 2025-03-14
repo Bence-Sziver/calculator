@@ -9,12 +9,16 @@ const operatorButtons = document.querySelectorAll("#operator-container button");
 const equalsButton = document.querySelector("#equals");
 const clearAllButton = document.querySelector("#clear-all");
 const clearButton = document.querySelector("#clear");
+const decimalButton = document.querySelector("#decimal");
 const display = document.querySelector("#display");
 
 digitButtons.forEach(digitButton => {
   digitButton.addEventListener("click", event => {
     if (isSecondOperand && num2 === null || num1 === null) {
       display.textContent = "";
+    }
+    if (event.target.id === "decimal" && display.textContent.includes(".")) {
+      return;
     }
     display.textContent += event.target.textContent;
     if (!isSecondOperand) {
