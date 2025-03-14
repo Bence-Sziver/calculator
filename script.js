@@ -73,6 +73,19 @@ clearButton.addEventListener("click", () => {
   let displayArr = display.textContent.split("");
   displayArr.pop();
   display.textContent = displayArr.join("");
+  if (!isSecondOperand) {
+    if (display.textContent === "") {
+      num1 = null;
+    } else {
+      num1 = +display.textContent;
+    }
+  } else {
+    if (display.textContent === "") {
+      num2 = null;
+    } else {
+      num2 = +display.textContent;
+    }
+  }
 });
 
 function operate(operator, num1, num2) {
